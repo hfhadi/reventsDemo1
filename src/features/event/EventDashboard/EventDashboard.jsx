@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
 import EventList from "../EventList/EventList";
-import cuid from "cuid";
 import { connect } from "react-redux";
 import {createEvent, updateEvent, deleteEvent} from '../eventActions';
 
@@ -17,34 +16,11 @@ const actions = {
 
 class EventDashboard extends Component {
 
-  //   handleIsOpenToggle = () => {
-  //     this.setState(({ isOpen }) => ({
-  //       isOpen: !isOpen
-  //     }));
-  //   };
-
   handleCreateFormOpen = () => {
     this.setState({
       isOpen: true,
       selectedEvent: null
     });
-  };
-
-  // handleFormCancel = () => {
-  //   this.setState({
-  //     isOpen: false
-  //   });
-  // };
-
-  handleCreateEvent = newEvent => {
-    newEvent.id = cuid();
-    newEvent.hostPhotoURL = "/assets/user.jpg";
-    this.props.createEvent(newEvent);
-  };
-
-
-  handleUpdateEvent = updatedEvent => {
-    this.props.updateEvent(updatedEvent);
   };
 
   handleDeleteEvent = id => {
