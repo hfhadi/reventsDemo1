@@ -1,18 +1,19 @@
 import { INCREMENT_COUNTER, DECREMENT_COUNTER } from "./TestConstants";
+import { createReducer } from "../../app/common/util/reducerUtils/reducerUtils";
 
 const initialState = {
   data: 43
 };
 
-const testReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case INCREMENT_COUNTER:
-      return { ...state, data: state.data + 222 };
-    case DECREMENT_COUNTER:
-      return { ...state, data: state.data - 333 };
-    default:
-      return state;
-  }
-};
+const increamentCounter = (state) => {
+    return { ...state, data: state.data + 1 };
+}
 
-export default testReducer;
+const decrementCounter = (state) => {
+    return { ...state, data: state.data - 1 };
+}
+
+export default createReducer(initialState, {
+    [INCREMENT_COUNTER]: increamentCounter,
+    [DECREMENT_COUNTER]: decrementCounter
+});
